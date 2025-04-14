@@ -132,18 +132,3 @@ If tests pass, green tick ✅
 If anything fails, red cross ❌
 
 ---
-
-## 📂 Folder Structure
-.
-├── app/
-│   ├── main.py          # FastAPI app
-│   ├── auth.py          # Login + JWT
-│   ├── qr_service.py    # QR image logic
-│   └── schemas.py       # Pydantic models
-├── tests/
-│   └── start_test.py    # Pytest async tests
-├── .github/
-│   └── workflows/
-│       └── main.yml     # GitHub Actions CI config
-├── requirements.txt
-└── README.md
