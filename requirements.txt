@@ -1,12 +1,12 @@
 pytest
 httpx
-fastapi==0.110.1
-uvicorn==0.29.0
+fastapi==0.114.2
+uvicorn==0.30.5
 python-jose==3.4.0
-python-multipart>=0.0.18
+python-multipart>=0.0.10
 passlib[bcrypt]==1.7.4
 python-dotenv==1.0.1
-qrcode==7.4.2
+qrcode==7.4.1
 pypng==0.20220715.0
 validators==0.24.0
 starlette>=0.40.0
