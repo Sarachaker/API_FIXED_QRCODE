@@ -3,10 +3,10 @@ httpx
 fastapi==0.110.0
 uvicorn==0.29.0
 python-jose==3.4.0
-python-multipart==0.0.12
+python-multipart>=0.0.18
 passlib[bcrypt]==1.7.4
 python-dotenv==1.0.1
 qrcode==7.4.2
 pypng==0.20220715.0
 validators==0.24.0
-starlette
+starlette>=0.40.0
