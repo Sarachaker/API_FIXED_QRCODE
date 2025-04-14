@@ -1,5 +1,5 @@
 import pytest
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 from app.main import app  # Import your FastAPI app
 
 @pytest.mark.asyncio
@@ -8,7 +8,8 @@ async def test_login_for_access_token():
         "username": "admin",
         "password": "secret",
     }
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         response = await ac.post("/token", data=form_data)
     assert response.status_code == 200
     assert "access_token" in response.json()
@@ -23,7 +24,8 @@ async def test_create_qr_code_unauthorized():
         "back_color": "white",
         "size": 10,
     }
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         response = await ac.post("/qr-codes/", json=qr_request)
     assert response.status_code == 401  # Unauthorized
 
@@ -33,7 +35,8 @@ async def test_create_and_delete_qr_code():
         "username": "admin",
         "password": "secret",
     }
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
         # Login and get the access token
         token_response = await ac.post("/token", data=form_data)
         access_token = token_response.json()["access_token"]
